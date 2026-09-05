@@ -10,11 +10,32 @@ import frontmatter
 import hashlib
 
 from typing import Any
+from datetime import datetime, timezone
 
 
 CACHE = Path(".cache")
 RAW = Path("data/raw")
 PROCESSED = Path("data/processed")
+LOCK = Path("data/sources.lock.yml")
+
+
+def load_lock():
+    if not LOCK.exists():
+        return {}
+    return yaml.safe_load(LOCK.read_text(encoding="utf-8")) or {}
+
+
+def lock_entry(previous, fields):
+    """Only stamp a new fetched_at when the content actually changed,
+    so a lockfile diff always means the corpus moved."""
+    version = fields.get("sha256") or fields.get("commit")
+    prev_version = previous.get("sha256") or previous.get("commit")
+
+    if previous and version == prev_version:
+        fields["fetched_at"] = previous["fetched_at"]
+    else:
+        fields["fetched_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return fields
 
 def fetch_git(source: dict[str, Any]):
     dest = CACHE / source["id"]
@@ -74,6 +95,9 @@ def main() -> None:
 
         sources_list = data_loaded["sources"]
 
+        previous_lock = load_lock()
+        lock = {}
+
         for source in sources_list:
             if source["type"] == "url":
                 downloaded = httpx.get(source["url"], follow_redirects=True, timeout=30.0).text
@@ -85,9 +109,28 @@ def main() -> None:
                     with open(f"data/processed/{source["id"]}.md", 'w') as f:
                         f.write(result)
 
+                lock[source["id"]] = lock_entry(
+                    previous_lock.get(source["id"], {}),
+                    {
+                        "url": source["url"],
+                        "sha256": hashlib.sha256(downloaded.encode("utf-8")).hexdigest(),
+                    },
+                )
+
             elif source["type"] == "git":
                 sha = fetch_git(source)
                 process_git(source, sha)
+
+                lock[source["id"]] = lock_entry(
+                    previous_lock.get(source["id"], {}),
+                    {
+                        "url": source["url"],
+                        "commit": sha,
+                        "files": len(list((RAW / source["id"]).rglob("*.md"))),
+                    },
+                )
+
+        LOCK.write_text(yaml.safe_dump(lock, sort_keys=True), encoding="utf-8")
 
 
 if __name__=="__main__":
