@@ -19,13 +19,13 @@ PROCESSED = Path("data/processed")
 LOCK = Path("data/sources.lock.yml")
 
 
-def load_lock():
+def load_lock() -> dict[str, str]:
     if not LOCK.exists():
         return {}
     return yaml.safe_load(LOCK.read_text(encoding="utf-8")) or {}
 
 
-def lock_entry(previous, fields):
+def lock_entry(previous, fields) -> dict[str, str]:
     """Only stamp a new fetched_at when the content actually changed,
     so a lockfile diff always means the corpus moved."""
     version = fields.get("sha256") or fields.get("commit")
@@ -37,7 +37,7 @@ def lock_entry(previous, fields):
         fields["fetched_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     return fields
 
-def fetch_git(source: dict[str, Any]):
+def fetch_git(source: dict[str, Any]) -> str:
     dest = CACHE / source["id"]
 
     if not dest.exists():
@@ -63,12 +63,12 @@ def fetch_git(source: dict[str, Any]):
     return sha
 
 
-def first_heading(text):
+def first_heading(text) -> str | None:
     m = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
     return m.group(1).strip() if m else None
 
 
-def process_git(source, sha):
+def process_git(source, sha) -> None:
     root = RAW / source["id"]
     for md in sorted(root.rglob("*.md")):
         rel = md.relative_to(root)
@@ -89,7 +89,37 @@ def process_git(source, sha):
                        encoding="utf-8")
 
 
-def main() -> None:
+def fetch_url(source: dict[str, Any]) -> str:
+    downloaded = httpx.get(source["url"], follow_redirects=True, timeout=30.0).text
+
+    with open(f"data/raw/{source["id"]}.html", 'w') as f:
+        f.write(downloaded)
+
+    return hashlib.sha256(downloaded.encode("utf-8")).hexdigest()
+
+
+def process_url(source: dict[str, Any]) -> None:
+    html = (RAW / f"{source["id"]}.html").read_text(encoding="utf-8")
+    markdown = extract(html, with_metadata=True, output_format="markdown")
+
+    post = frontmatter.loads(markdown)
+    body = post.content
+
+    meta = dict(post.metadata)                    # keep author, date, ...
+    meta.update({
+        "doc_id": source["id"],
+        "title": meta.get("title") or first_heading(body) or source["id"],
+        "url": source["url"],
+        "doc_hash": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+    })
+
+    out = PROCESSED / f"{source["id"]}.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(frontmatter.dumps(frontmatter.Post(body, **meta)),
+                   encoding="utf-8")
+
+
+def fetch_and_parse() -> None:
     with open("data/sources.yml", 'r') as stream:
         data_loaded = yaml.safe_load(stream)
 
@@ -100,20 +130,14 @@ def main() -> None:
 
         for source in sources_list:
             if source["type"] == "url":
-                downloaded = httpx.get(source["url"], follow_redirects=True, timeout=30.0).text
-
-                with open(f"data/raw/{source["id"]}.html", 'w') as f:
-                    f.write(downloaded)
-
-                    result = extract(downloaded, with_metadata=True, output_format="markdown")
-                    with open(f"data/processed/{source["id"]}.md", 'w') as f:
-                        f.write(result)
+                sha256 = fetch_url(source)
+                process_url(source)
 
                 lock[source["id"]] = lock_entry(
                     previous_lock.get(source["id"], {}),
                     {
                         "url": source["url"],
-                        "sha256": hashlib.sha256(downloaded.encode("utf-8")).hexdigest(),
+                        "sha256": sha256,
                     },
                 )
 
@@ -134,4 +158,4 @@ def main() -> None:
 
 
 if __name__=="__main__":
-    main()
+    fetch_and_parse()
