@@ -42,7 +42,12 @@ def fetch_git(source: dict[str, Any]) -> str:
 
     if not dest.exists():
         subprocess.run(
-            ["git", "clone", "--depth", "1", source["url"], str(dest)],
+            ["git", "clone", "--depth", "1", "--filter=blob:none", "--sparse",
+             source["url"], str(dest)],
+            check=True,
+        )
+        subprocess.run(
+            ["git", "-C", str(dest), "sparse-checkout", "set", "--no-cone", "/**/*.md"],
             check=True,
         )
 
