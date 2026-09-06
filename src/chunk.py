@@ -55,7 +55,7 @@ def chunk_doc(meta: dict[str, Any], body: str) -> list[dict[str, Any]]:
                     "title": meta["title"],
                     "url": meta["url"],
                     "doc_hash": meta["doc_hash"],
-                    **{k: meta[k] for k in CARRIED if k in meta},
+                    **{k: meta[k] for k in CARRIED if meta.get(k) is not None},
                 }
             )
 
