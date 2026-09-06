@@ -219,3 +219,8 @@ __marimo__/
 .superpowers/
 
 .cache/
+data/processed
+data/chroma
+data/raw/field-guide
+
+.impeccable/
