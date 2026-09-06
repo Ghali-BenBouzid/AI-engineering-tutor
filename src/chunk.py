@@ -9,10 +9,10 @@ from langchain_text_splitters import (
 )
 from transformers import AutoTokenizer
 
-PROCESSED = Path("data/processed")
-MODEL = "BAAI/bge-small-en-v1.5"
-MAX_TOKENS = 512  # bge-small-en-v1.5 max sequence length
+from src.config import settings
 
+PROCESSED = Path("data/processed")
+MODEL = settings.embedding_model_name
 HEADERS = [("#", "h1"), ("##", "h2"), ("###", "h3")]
 CARRIED = ("author", "date")
 
@@ -75,8 +75,8 @@ def main() -> None:
     chunks = chunk_all()
     lengths = sorted(token_len(c["text"]) for c in chunks)
 
-    oversized = [c for c in chunks if token_len(c["text"]) > MAX_TOKENS]
-    assert not oversized, f"{len(oversized)} chunks exceed {MAX_TOKENS} tokens"
+    oversized = [c for c in chunks if token_len(c["text"]) > tokenizer.model_max_length]
+    assert not oversized, f"{len(oversized)} chunks exceed {tokenizer.model_max_length} tokens"
 
     print(f"{len(chunks)} chunks from {len(set(c['doc_id'] for c in chunks))} docs")
     print(f"tokens: min={lengths[0]} median={lengths[len(lengths) // 2]} max={lengths[-1]}")
