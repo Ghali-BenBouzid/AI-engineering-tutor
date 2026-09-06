@@ -12,11 +12,13 @@ import hashlib
 from typing import Any
 from datetime import datetime, timezone
 
+from src.config import settings
+
 
 CACHE = Path(".cache")
-RAW = Path("data/raw")
-PROCESSED = Path("data/processed")
-LOCK = Path("data/sources.lock.yml")
+RAW = Path(settings.raw_data_dir)
+PROCESSED = Path(settings.processed_data_dir)
+LOCK = Path(settings.lockfile_path)
 
 
 def load_lock() -> dict[str, str]:

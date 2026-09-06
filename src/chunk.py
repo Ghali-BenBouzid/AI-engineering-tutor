@@ -11,7 +11,7 @@ from transformers import AutoTokenizer
 
 from src.config import settings
 
-PROCESSED = Path("data/processed")
+PROCESSED = Path(settings.processed_data_dir)
 MODEL = settings.embedding_model_name
 HEADERS = [("#", "h1"), ("##", "h2"), ("###", "h3")]
 CARRIED = ("author", "date")
