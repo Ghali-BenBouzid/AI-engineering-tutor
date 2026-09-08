@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+.superpowers/
+
+.cache/
+data/processed
+data/chroma
+data/raw/field-guide
+
+.impeccable/

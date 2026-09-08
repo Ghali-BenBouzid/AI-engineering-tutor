@@ -1,0 +1,9 @@
+sources:
+- id: genai-platform
+  type: url
+  url: https://huyenchip.com/2024/07/25/genai-platform.html
+- id: field-guide
+  type: git
+  url: https://github.com/alexeygrigorev/ai-engineering-field-guide
+  include: "**/*.md"
+  exclude: ["_work-in-progress/**", ".claude/**", "**/_internal/**", "CLAUDE.md", "STYLING.md"]

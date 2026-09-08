@@ -1,0 +1,9 @@
+field-guide:
+  commit: 7eadc13ee803bc537d4e151d7068c60da26c1319
+  fetched_at: '2026-09-05T16:37:58+00:00'
+  files: 57
+  url: https://github.com/alexeygrigorev/ai-engineering-field-guide
+genai-platform:
+  fetched_at: '2026-09-05T16:37:45+00:00'
+  sha256: 1ef8e764e816dfaf934c925cb0f7c86128304a637a11f0d6d86d968b947e3b9b
+  url: https://huyenchip.com/2024/07/25/genai-platform.html
