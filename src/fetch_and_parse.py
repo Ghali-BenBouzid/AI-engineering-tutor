@@ -99,8 +99,9 @@ def process_git(source, sha) -> None:
 def fetch_url(source: dict[str, Any]) -> str:
     downloaded = httpx.get(source["url"], follow_redirects=True, timeout=30.0).text
 
-    with open(f"data/raw/{source["id"]}.html", 'w') as f:
-        f.write(downloaded)
+    out = RAW / f"{source["id"]}.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(downloaded, encoding="utf-8")
 
     return hashlib.sha256(downloaded.encode("utf-8")).hexdigest()
 
@@ -159,6 +160,11 @@ def fetch_and_parse() -> None:
                         "commit": sha,
                         "files": len(list((RAW / source["id"]).rglob("*.md"))),
                     },
+                )
+
+            else:
+                raise ValueError(
+                    f"{source['id']}: unknown source type {source['type']!r}"
                 )
 
         LOCK.write_text(yaml.safe_dump(lock, sort_keys=True), encoding="utf-8")

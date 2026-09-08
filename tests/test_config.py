@@ -17,7 +17,7 @@ def no_dotenv(workdir, monkeypatch):
 def test_settings_load_without_a_dotenv(no_dotenv):
     """A required secret would break `chunk.py`, which needs no API key."""
     settings = Settings()
-    assert settings.openrouter_key is None
+    assert settings.openrouter_api_key is None
 
 
 def test_secrets_are_optional_and_everything_else_has_a_default(no_dotenv):
