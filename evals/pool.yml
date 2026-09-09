@@ -3239,3 +3239,835 @@ q15:
   - bm25
   preview: '- Hackathons (weekend and multi-week online) were more effective than courses - Self-taught when denied internal AI team role: built LLM apps, attended hackathons, wrote about it publicly - Alex Xu System Design Interview books: "just readi...'
   relevant: null
+q19:
+- doc_id: field-guide/interview/03-get-hired
+  section: Getting Hired > Portfolio Strategy
+  found_by:
+  - dense
+  - bm25
+  preview: '## Portfolio Strategy See [portfolio project ideas and strategy](../portfolio/README.md) for detailed guidance on project selection, README writing, and what hiring managers look at.'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > README quality'
+  found_by:
+  - dense
+  - bm25
+  preview: '### README quality This is probably the most important part of your project. You need to make sure it is not too big and not too small, that it has all the important information but not too much. For me the most important thing: the README ...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > README Checklist'
+  found_by:
+  - dense
+  - bm25
+  preview: '## README Checklist In your project README, help a hiring manager understand these details in a minute or less: 1. What you built 2. Who it''s for 3. What input it takes 4. What output it produces 5. How you evaluate whether it works 6. Why ...'
+  relevant: null
+- doc_id: field-guide/portfolio/04-polishing
+  section: Polishing > README
+  found_by:
+  - dense
+  - bm25
+  preview: '## README Most people read the README first. Make it answer: - What problem does this solve? - Who''s it for? - What input does it take? - What output does it produce? - How do I run it? - How do I run tests and evals? - What did the eval sh...'
+  relevant: null
+- doc_id: field-guide/portfolio/06-common-mistakes
+  section: Common Mistakes > No Repo Plan
+  found_by:
+  - dense
+  - bm25
+  preview: '## No Repo Plan A good project can still look weak if the repo is hard to understand. Plan the repo: - `README.md` explains problem, user, first version, demo, and trade-offs - `src/` or app folders contain product code - `tests/` covers de...'
+  relevant: null
+- doc_id: field-guide/README
+  section: AI Engineering Field Guide
+  found_by:
+  - dense
+  - bm25
+  preview: '# AI Engineering Field Guide Data-driven field guide to AI engineering roles, skills, and interviews. AI Engineering Field Guide is **the** go-to resource for AI engineering. Everything here is based on real data: 6,964 actual job descripti...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering
+  found_by:
+  - dense
+  - bm25
+  preview: '# Awesome AI Engineering Curated collection of resources for AI engineering: practitioner stories, system design guides, company engineering blogs, books, courses, and case studies. This is the list of resources I used while researching con...'
+  relevant: null
+- doc_id: field-guide/portfolio/05-present-the-project
+  section: Present the Project > Project Page
+  found_by:
+  - dense
+  - bm25
+  preview: '## Project Page Use the README, a portfolio page, or a short case study as the project page. Include: - problem - user - input - output - demo - architecture - tests - evaluation - limitations - links to important files Keep it direct. Exam...'
+  relevant: null
+- doc_id: field-guide/portfolio/README
+  section: Portfolio > Contents
+  found_by:
+  - dense
+  preview: '## Contents Read in order: 1. [Types of Portfolio Projects](01-types-of-projects.md) 2. [Pick a Portfolio Project](02-how-to-pick-a-project.md) 3. [Start a Project](03-start-a-project.md) 4. [Polishing](04-polishing.md) 5. [Present the Proj...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project'
+  found_by:
+  - bm25
+  preview: '# Webinar 5: Selecting a Portfolio Project I hosted this webinar for AI Shipping Labs on June 29, 2026. - [My LinkedIn profile](https://www.linkedin.com/in/agrigorev/) - [Workshop at AI Shipping Labs](https://aishippinglabs.com/workshops/se...'
+  relevant: null
+- doc_id: field-guide/portfolio/06-common-mistakes
+  section: Common Mistakes > No Evaluation Plan
+  found_by:
+  - dense
+  preview: '## No Evaluation Plan An AI portfolio project needs a way to tell whether it improved. Start with 20-50 examples. Include: - easy cases - messy cases - out-of-scope requests - refusal cases - citation cases when sources matter Pick metrics ...'
+  relevant: null
+- doc_id: field-guide/portfolio/README
+  section: Portfolio
+  found_by:
+  - bm25
+  preview: '# Portfolio Choose, plan, build, and present AI engineering portfolio projects you can finish and discuss in interviews. Start from a real domain, real companies, and real problems. Then choose the technology that fits. Use this progression...'
+  relevant: null
+- doc_id: field-guide/portfolio/04-polishing
+  section: Polishing
+  found_by:
+  - dense
+  preview: '# Polishing A portfolio project becomes useful when someone can understand it, run it, and discuss it with you. Polish isn''t decoration because it shows evidence.'
+  relevant: null
+- doc_id: field-guide/interview/data/sources/github-search-methodology
+  section: GitHub Search Methodology > Step-by-Step Process > 4. Manual curation
+  found_by:
+  - bm25
+  preview: '### 4. Manual curation The remaining candidates (typically 150-250 after filtering) need manual review. Apply the [AI vs. ML scoping criteria](../../_internal/ai-vs-ml-scoping.md) to each repo during this step — many repos are titled "AI En...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Types of Portfolio Projects'
+  found_by:
+  - dense
+  preview: '## Types of Portfolio Projects Your portfolio can include four types of projects: - Role-targeted projects: You design these projects for a specific role and domain. Research companies in that domain, identify the problems they work on, and...'
+  relevant: null
+- doc_id: field-guide/README
+  section: AI Engineering Field Guide > Portfolio
+  found_by:
+  - dense
+  preview: '## Portfolio - [Portfolio guide](portfolio/) - how to choose, build, and present AI engineering portfolio projects'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Description'
+  found_by:
+  - dense
+  preview: '## Description You may struggle to choose a portfolio project when you have too many ideas and no clear way to compare them. In this webinar, I share a repeatable way to find a project that''s relevant to the roles you want. We ground the pr...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > What do hiring managers focus on?'
+  found_by:
+  - bm25
+  preview: '### What do hiring managers focus on? As a hiring manager, what I want to see: 1. The project solves a real problem - what it does, why it exists 2. A clear description so I can open the README and immediately understand what is going on 3....'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Topics Covered'
+  found_by:
+  - dense
+  preview: '## Topics Covered In the webinar, we cover: - Why an active portfolio helps during a job search - The different types of projects that can become portfolio pieces - Choosing a target domain instead of building a random project - Researching...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > Do recruiters check your GitHub?'
+  found_by:
+  - bm25
+  preview: '### Do recruiters check your GitHub? Recruiters themselves most likely do not check. Who will actually look is the hiring manager. When I was hiring people, I did not have time to look in detail. Maybe 5-10 minutes before the interview I wo...'
+  relevant: null
+- doc_id: field-guide/interview/04-after-the-interview
+  section: After the Interview > Salary Negotiation
+  found_by:
+  - bm25
+  preview: '## Salary Negotiation If you already named a salary number in the initial recruiter call and they offer that exact number, it''s very hard to negotiate upward. Two approaches to the initial salary question: - Say the number upfront - works w...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Scoping the First Version'
+  found_by:
+  - bm25
+  preview: '## Scoping the First Version Your first version should run end to end with real input and produce a useful result. A small working project is stronger than an ambitious architecture that''s never finished. Keep the first version focused on o...'
+  relevant: null
+- doc_id: field-guide/portfolio/03-start-a-project
+  section: Start a Project > Write the Plan
+  found_by:
+  - dense
+  preview: '## Write the Plan Use `PROJECT_PLAN.md`, `docs/project-plan.md`, the first section of `README.md`, or a GitHub issue. Using AI is fine for this step. Use it to summarize notes, compare project candidates, or draft the plan. Then check the r...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > Two audiences for your README'
+  found_by:
+  - dense
+  preview: '### Two audiences for your README Write your README for two different audiences: 1. The first audience is a peer reviewer (or another student) who has time to check everything and verify all criteria are satisfied. This motivates you to wri...'
+  relevant: null
+- doc_id: field-guide/webinars/03-the-interview-process
+  section: 'Webinar 3: AI Engineering - The Interview Process > Q&A After the Webinar > How important is working code in interviews?'
+  found_by:
+  - bm25
+  preview: '### How important is working code in interviews? More often it is not as important as you might think. For live coding with complex tasks (like writing a web crawler in 30 minutes under stress), you often say "here I would implement it this...'
+  relevant: null
+- doc_id: field-guide/interview/data/research-exports/trends
+  section: AI Engineering Trends Analysis (2026) > 8. Candidate Preparation Trends > 8.1 Portfolio Evolution
+  found_by:
+  - bm25
+  preview: '## 8. Candidate Preparation Trends ### 8.1 Portfolio Evolution 2024 portfolio: Few RAG demos, tutorial-based projects 2026 portfolio: - 1-2 "production-grade" projects with: - Docker/containerization - Evaluation metrics - Deployment eviden...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > Using Claude Code in your portfolio'
+  found_by:
+  - dense
+  preview: '### Using Claude Code in your portfolio For me this is neutral. If you do not use Claude Code or some assistant, you are missing out. But I do not see a reason to specifically mention it. If you want to be open about it, you can say at the ...'
+  relevant: null
+- doc_id: field-guide/portfolio/04-polishing
+  section: Polishing > Code Structure
+  found_by:
+  - bm25
+  preview: '## Code Structure Make the repo easy to scan. Example: ```text src/ app.py retrieval.py prompts.py schemas.py tests/ evals/ data/ README.md PROJECT_PLAN.md .env.example ``` Names should explain the project, so avoid one giant notebook or on...'
+  relevant: null
+- doc_id: field-guide/portfolio/02-how-to-pick-a-project
+  section: Pick a Portfolio Project
+  found_by:
+  - dense
+  preview: '# Pick a Portfolio Project Start from a real domain and real companies, not from a technology you want to use. Use this workflow: 1. Pick five candidate domains 2. Select one domain 3. Pick companies in that domain 4. Analyze job descriptio...'
+  relevant: null
+- doc_id: field-guide/webinars/README
+  section: Webinars > About the series
+  found_by:
+  - bm25
+  preview: '## About the series 1. A Day of an AI Engineer - The practical reality of the role: core responsibilities, prompt engineering, evaluation datasets, production concerns (A/B testing, monitoring, feedback loops), and the skills a modern AI en...'
+  relevant: null
+- doc_id: field-guide/portfolio/03-start-a-project
+  section: Start a Project > Save the Evidence
+  found_by:
+  - dense
+  preview: '## Save the Evidence Put the evidence in the repo plan. Collect: - target domain - target companies - job descriptions - company blog posts - product docs - public datasets or sample documents Use links, not vague notes. Example: ```text Do...'
+  relevant: null
+- doc_id: field-guide/role/01-my-vision
+  section: My Vision of the AI Engineer Role
+  found_by:
+  - bm25
+  preview: '# My Vision of the AI Engineer Role Based on [What Is an AI Engineer? Alexey Grigorev''s Experience-Based Definition](https://aishippinglabs.com/blog/what-is-an-ai-engineer-alexey-grigorev-perspective). This is my personal vision of the role...'
+  relevant: null
+q20:
+- doc_id: field-guide/portfolio/05-present-the-project
+  section: Present the Project > 60-Second Pitch
+  found_by:
+  - dense
+  - bm25
+  preview: '## 60-Second Pitch Use the short pitch when someone asks, "Tell me about a project you built." Cover: - problem - user - solution - evidence - ownership Example: ```text I built a support-ticket triage assistant for small SaaS teams. It tak...'
+  relevant: null
+- doc_id: field-guide/README
+  section: AI Engineering Field Guide
+  found_by:
+  - dense
+  - bm25
+  preview: '# AI Engineering Field Guide Data-driven field guide to AI engineering roles, skills, and interviews. AI Engineering Field Guide is **the** go-to resource for AI engineering. Everything here is based on real data: 6,964 actual job descripti...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Key Takeaways'
+  found_by:
+  - dense
+  - bm25
+  preview: '## Key Takeaways Use these principles when you choose and scope your project: - Choose a domain first and let real company problems guide project selection. - Prefer problems shared by several companies over a narrow idea tied to one openin...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > What do hiring managers focus on?'
+  found_by:
+  - bm25
+  preview: '### What do hiring managers focus on? As a hiring manager, what I want to see: 1. The project solves a real problem - what it does, why it exists 2. A clear description so I can open the README and immediately understand what is going on 3....'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Technical Questions > LLM Fundamentals
+  found_by:
+  - bm25
+  preview: '- What is the self-attention mechanism? How does it differ from multi-head attention? [^sundeep-teki] - What is grouped query attention and how does it differ from standard multi-head attention? [^mimansa-jaiswal] - What are the differences...'
+  relevant: null
+- doc_id: field-guide/learning-paths/from-data-scientist
+  section: From Data Scientist to AI Engineer > What You Need to Learn
+  found_by:
+  - dense
+  preview: '## What You Need to Learn - Engineering best practices - tests, CI/CD, code quality - Production deployment - Docker, FastAPI, REST APIs - Cloud platforms - AWS, Azure, GCP - Kubernetes and container orchestration - LLM APIs - OpenAI, Anthr...'
+  relevant: null
+- doc_id: field-guide/webinars/03-the-interview-process
+  section: 'Webinar 3: AI Engineering - The Interview Process > Key Findings > Project Deep Dive'
+  found_by:
+  - dense
+  preview: '### Project Deep Dive The hiring manager picks one project and goes deep for ~30 minutes. They want to understand: how involved you were, what decisions you made, what trade-offs you considered, what went wrong. This reveals seniority level...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > Programming languages in AI engineering'
+  found_by:
+  - bm25
+  preview: '## Q&A After the Webinar ### Programming languages in AI engineering From the analysis of 895 job descriptions: - Python - 738 jobs (82.5%) - TypeScript - 209 jobs (23.4%) - Java - 133 jobs (14.9%) - Go - 101 jobs (11.3%) - SQL - 88 jobs (9...'
+  relevant: null
+- doc_id: field-guide/webinars/03-the-interview-process
+  section: 'Webinar 3: AI Engineering - The Interview Process > Key Findings > Behavioral'
+  found_by:
+  - dense
+  preview: '### Behavioral Not AI-specific. Amazon leadership principles are a good framework to prepare stories for any company - values are similar across companies. Use STAR format (situation, task, action, result) when preparing, then speak natural...'
+  relevant: null
+- doc_id: field-guide/portfolio/04-polishing
+  section: Polishing > README
+  found_by:
+  - bm25
+  preview: '## README Most people read the README first. Make it answer: - What problem does this solve? - Who''s it for? - What input does it take? - What output does it produce? - How do I run it? - How do I run tests and evals? - What did the eval sh...'
+  relevant: null
+- doc_id: field-guide/interview/data/research-exports/home-assignments
+  section: AI Engineer Take-Home Assignments (2024–2026) > Assignment Types > 2. RAG Pipelines
+  found_by:
+  - dense
+  preview: '- Yardstick.team framework: Three exercise types — system design (architect RAG pipeline), implementation (build working prototype), debugging (fix a flawed RAG system with poor chunking or inefficient retrieval). ([yardstick.team](https://...'
+  relevant: null
+- doc_id: field-guide/portfolio/07-project-ideas
+  section: Project Ideas > Study Checklist
+  found_by:
+  - bm25
+  preview: '## Study Checklist For each repo, ask: - What domain is it in? - What problem does it solve? - Who''s the user? - What input does it take? - What output does it produce? - How does it prove the output works? - Which parts are deterministic c...'
+  relevant: null
+- doc_id: field-guide/portfolio/06-common-mistakes
+  section: Common Mistakes > No Evaluation Plan
+  found_by:
+  - dense
+  preview: '## No Evaluation Plan An AI portfolio project needs a way to tell whether it improved. Start with 20-50 examples. Include: - easy cases - messy cases - out-of-scope requests - refusal cases - citation cases when sources matter Pick metrics ...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Key Findings > Dataset'
+  found_by:
+  - bm25
+  preview: '## Key Findings ### Dataset The analysis is based on approximately 895 job descriptions scraped from the Built In website in January 2026. Jobs were collected from five cities: Berlin, Amsterdam, London, Los Angeles, and New York. After rem...'
+  relevant: null
+- doc_id: field-guide/interview/questions/03-project-deep-dive
+  section: Project Deep Dive Interview > How to Prepare
+  found_by:
+  - dense
+  preview: '## How to Prepare Project selection - Choose a project that demonstrates ownership. Recent and greenfield is better. [^exponent-openai] Structure your narrative around a natural progression: 1. Business problem - What problem were you solvi...'
+  relevant: null
+- doc_id: field-guide/interview/questions/01-theory
+  section: Theory Questions > Specialized Topics > LLM Theory
+  found_by:
+  - bm25
+  preview: '### LLM Theory - How do transformers work? [^proptech-founder-2] [^reddit-genai-consulting] [^reddit-ai-eng-questions] [^process-analysis] - What is the self-attention mechanism? [^sundeep-teki] - Explain the difference between encoder-only...'
+  relevant: null
+- doc_id: field-guide/interview/questions/03-project-deep-dive
+  section: Project Deep Dive Interview > Format
+  found_by:
+  - dense
+  preview: '## Format Typically 30-60 minutes. At senior levels, the deep dive can focus exclusively on a single project for a whole hour, blending behavioral and technical interviews as the interviewer probes your architecture, decisions, and reasonin...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering
+  found_by:
+  - bm25
+  preview: '# Awesome AI Engineering Curated collection of resources for AI engineering: practitioner stories, system design guides, company engineering blogs, books, courses, and case studies. This is the list of resources I used while researching con...'
+  relevant: null
+- doc_id: field-guide/interview/questions/04-ai-system-design
+  section: AI System Design Interview > Format
+  found_by:
+  - dense
+  preview: '## Format Typically 45-60 minutes. You drive the conversation through: [^designgurus] - Clarify requirements, constraints, and success criteria - Sketch a high-level architecture - Deep-dive into specific components - Discuss trade-offs, fa...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Turning Research Into a Project'
+  found_by:
+  - bm25
+  preview: '## Turning Research Into a Project Start with job descriptions to learn about responsibilities, team context, and expected skills. Then use engineering blogs and case studies to learn what teams have built and which practical problems they ...'
+  relevant: null
+- doc_id: field-guide/interview/03-get-hired
+  section: Getting Hired > How to Prepare > Suggested timeline (8-12 weeks)
+  found_by:
+  - dense
+  preview: '### Suggested timeline (8-12 weeks) - Weeks 1-2: coding fundamentals. NeetCode 150/250, focus on patterns not memorization - Weeks 3-4: ML/LLM implementation. Transformers, attention mechanisms, LoRA from scratch using NumPy/PyTorch. Practi...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > Observability
+  found_by:
+  - bm25
+  preview: '## Observability While I have placed observability in its own section, it should be integrated into the platform from the beginning rather than added later as an afterthought. Observability is crucial for projects of all sizes, and its impo...'
+  relevant: null
+- doc_id: field-guide/interview/questions/05-behavioral
+  section: Behavioral Interview Questions > Format
+  found_by:
+  - dense
+  preview: '## Format Typically 30-60 minutes, conversational. The interviewer picks a theme (conflict, leadership, failure, technical decision-making) and goes deep on one or two scenarios rather than asking many surface-level questions. Common format...'
+  relevant: null
+- doc_id: field-guide/role/06-fde
+  section: 'Forward Deployed Engineers: What Our Job Data Shows'
+  found_by:
+  - bm25
+  preview: '# Forward Deployed Engineers: What Our Job Data Shows Forward Deployed Engineer (FDE) is one of the fastest-growing titles in our AI engineering job data. We found 28 live FDE listings in February 2026 and 118 in July, a 4.2x increase in le...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > The Six-Step Project Selection Framework'
+  found_by:
+  - dense
+  preview: '## The Six-Step Project Selection Framework Follow these steps to choose a role-targeted project: 1. Pick a domain where you want to work. 2. Find companies in that domain that hire, or have hired, for your target role. 3. Analyze their job...'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Technical Questions > Cost and Latency Optimization
+  found_by:
+  - bm25
+  preview: '- What is prompt compression and how does it reduce cost? [^llmgenai] [^hn-46319888] [^hn-44013971] - Latency vs. throughput optimization for LLM serving - what are the trade-offs? [^youtube-short] - How would you benchmark each LLM call in...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering > ML System Design & Interviews > Guides and Frameworks
+  found_by:
+  - dense
+  preview: '### Guides and Frameworks - [Chip Huyen: ML Systems Design Exercises](https://huyenchip.com/machine-learning-systems-design/exercises.html) - classic exercise set - [Backprop: FAANG ML System Design](https://www.trybackprop.com/blog/ml_syst...'
+  relevant: null
+- doc_id: field-guide/webinars/03-the-interview-process
+  section: 'Webinar 3: AI Engineering - The Interview Process > Topics Covered'
+  found_by:
+  - dense
+  preview: '## Topics Covered - Interview process structure - the 7 typical steps from recruiter screen to final round, based on 1,600+ job descriptions and candidate reports - Theory questions - RAG, agents, testing/evaluation, monitoring, cost optimi...'
+  relevant: null
+- doc_id: field-guide/interview/03-get-hired
+  section: Getting Hired > Career Transitions
+  found_by:
+  - bm25
+  preview: '## Career Transitions If you are transitioning from another engineering role, see the [learning paths](../learning-paths/README.md#role-specific-guides) - they cover the transition from backend, frontend, data engineering, data science, and...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project > Description'
+  found_by:
+  - dense
+  preview: '## Description You may struggle to choose a portfolio project when you have too many ideas and no clear way to compare them. In this webinar, I share a repeatable way to find a project that''s relevant to the roles you want. We ground the pr...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > README quality'
+  found_by:
+  - bm25
+  preview: '### README quality This is probably the most important part of your project. You need to make sure it is not too big and not too small, that it has all the important information but not too much. For me the most important thing: the README ...'
+  relevant: null
+- doc_id: field-guide/portfolio/README
+  section: Portfolio > Contents
+  found_by:
+  - dense
+  preview: '## Contents Read in order: 1. [Types of Portfolio Projects](01-types-of-projects.md) 2. [Pick a Portfolio Project](02-how-to-pick-a-project.md) 3. [Start a Project](03-start-a-project.md) 4. [Polishing](04-polishing.md) 5. [Present the Proj...'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Technical Questions > Fine-tuning and Training
+  found_by:
+  - bm25
+  preview: '### Fine-tuning and Training - When would you fine-tune vs use prompt engineering? [^process-analysis] [^reddit-prep-ai-eng] [^reddit-genai-consulting] [^x-ashutosh-1] (reported across multiple companies) - What is PEFT/LoRA and when would ...'
+  relevant: null
+- doc_id: field-guide/webinars/05-selecting-a-portfolio-project
+  section: 'Webinar 5: Selecting a Portfolio Project'
+  found_by:
+  - dense
+  preview: '# Webinar 5: Selecting a Portfolio Project I hosted this webinar for AI Shipping Labs on June 29, 2026. - [My LinkedIn profile](https://www.linkedin.com/in/agrigorev/) - [Workshop at AI Shipping Labs](https://aishippinglabs.com/workshops/se...'
+  relevant: null
+- doc_id: field-guide/portfolio/02-how-to-pick-a-project
+  section: Pick a Portfolio Project > Choose Technologies
+  found_by:
+  - dense
+  preview: '## Choose Technologies Choose technology after the problem is clear: - RAG: when the answer must come from a knowledge source - agents: when the system needs tools, state, or multi-step work - structured output: when the user needs validate...'
+  relevant: null
+q21:
+- doc_id: field-guide/README
+  section: AI Engineering Field Guide
+  found_by:
+  - dense
+  - bm25
+  preview: '# AI Engineering Field Guide Data-driven field guide to AI engineering roles, skills, and interviews. AI Engineering Field Guide is **the** go-to resource for AI engineering. Everything here is based on real data: 6,964 actual job descripti...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Key Findings > Dataset'
+  found_by:
+  - dense
+  - bm25
+  preview: '## Key Findings ### Dataset The analysis is based on approximately 895 job descriptions scraped from the Built In website in January 2026. Jobs were collected from five cities: Berlin, Amsterdam, London, Los Angeles, and New York. After rem...'
+  relevant: null
+- doc_id: field-guide/role/08-trends-appendix
+  section: AI Engineering Job Market Trends - Appendix > Data and methodology
+  found_by:
+  - dense
+  - bm25
+  preview: '## Data and methodology Eight scrapes of builtin.com, each an independent cross-section: - Feb 4: 895 postings - Feb 27: 869 - Mar 27: 680 - Apr 22: 645 - May 29: 919 - Jun 25: 888 - Jul 22: 846 - Aug 25: 1,222 Total: 6,964 postings. Job ID...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > Fine-Tuning Requirements > Fine-Tuning Use Cases
+  found_by:
+  - dense
+  preview: '### Fine-Tuning Use Cases - Instruction following - Agents that follow complex instructions, task execution - Domain knowledge - Medical, legal, finance, industry-specific applications - Style/Tone - Brand voice, personality, formatting req...'
+  relevant: null
+- doc_id: field-guide/role/05-reality-vs-postings
+  section: 'AI Engineer Role: Reality vs. Job Postings > Jobs vs. Reality Gap'
+  found_by:
+  - bm25
+  preview: '## Jobs vs. Reality Gap | Dimension | Job Postings Say | People Actually Experience | |-----------|------------------|---------------------------| | RAG | Core skill (35.9% mention it) | Assumed baseline—evaluations matter more | | Fine-tun...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > Fine-Tuning Requirements
+  found_by:
+  - dense
+  preview: '## Fine-Tuning Requirements 27.3% of AI-First roles mention fine-tuning anywhere in the posting'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Key Insights > 6. Fine-tuning is Uncommon
+  found_by:
+  - dense
+  preview: '### 6. Fine-tuning is Uncommon Despite the hype, fine-tuning appears in only 13.8% of jobs and prompt engineering in 10.0%. Most roles use existing models with RAG, prompting, and integration rather than training or tuning.'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Technical Questions > Fine-tuning and Training
+  found_by:
+  - bm25
+  preview: '### Fine-tuning and Training - When would you fine-tune vs use prompt engineering? [^process-analysis] [^reddit-prep-ai-eng] [^reddit-genai-consulting] [^x-ashutosh-1] (reported across multiple companies) - What is PEFT/LoRA and when would ...'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Rare > Fine-tuning Models
+  found_by:
+  - dense
+  preview: '## Rare ### Fine-tuning Models Appears in 13.8% of jobs (769 responsibilities). Problem: Generic models do not always work for specialized use cases. Fine-tuning can improve performance on specific tasks. What AI Engineers do: - Develop pro...'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: AI Engineering Job Market Trends > Startups lead on fine-tuning now, growth-stage on agents
+  found_by:
+  - dense
+  preview: '## Startups lead on fine-tuning now, growth-stage on agents - Early-stage (Seed-Series A) companies over-index on ai-first (x1.16) and, notably, `Fine-Tuning` (x1.23) - and sharply under-index on `PyTorch`/`TensorFlow`, `AWS`, and `Docker`/...'
+  relevant: null
+- doc_id: field-guide/interview/data/sources/discussion-threads
+  section: AI Engineer Interview Threads > Hacker News (46 threads) > ML/AI Job Market & Hiring Landscape
+  found_by:
+  - bm25
+  preview: '### ML/AI Job Market & Hiring Landscape 39. [Ask HN: How''s the current state of hiring in the LLM field?](https://news.ycombinator.com/item?id=39605588) -- LLM positions growth 40. [I''m a ML Engineer at FAANG and I have been passively looki...'
+  relevant: null
+- doc_id: field-guide/webinars/01-a-day-of-ai-engineer
+  section: 'Webinar 1: A Day of an AI Engineer > Q&A After the Webinar > Data Engineering vs AI Engineering - which has more stable demand and is more remote-friendly?'
+  found_by:
+  - bm25
+  preview: '### Data Engineering vs AI Engineering - which has more stable demand and is more remote-friendly? For stability, data engineering has been growing steadily. Data engineers continue to be in demand - there''s always a need to build pipelines...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis
+  found_by:
+  - dense
+  preview: '# AI Engineering Jobs Analysis Generated from 6,964 job descriptions extracted from builtin.com. I searched for jobs containing "AI Engineer" keyword from LA (Global), New York, London, Amsterdam, Berlin and India. This is the combined resu...'
+  relevant: null
+- doc_id: field-guide/role/06-fde
+  section: 'Forward Deployed Engineers: What Our Job Data Shows'
+  found_by:
+  - bm25
+  preview: '# Forward Deployed Engineers: What Our Job Data Shows Forward Deployed Engineer (FDE) is one of the fastest-growing titles in our AI engineering job data. We found 28 live FDE listings in February 2026 and 118 in July, a 4.2x increase in le...'
+  relevant: null
+- doc_id: field-guide/webinars/01-a-day-of-ai-engineer
+  section: 'Webinar 1: A Day of an AI Engineer > Description'
+  found_by:
+  - bm25
+  preview: '## Description The role of an AI Engineer is often misunderstood as purely research-focused. This session cuts through theory to show the practical reality of the role.'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: AI Engineering Job Market Trends
+  found_by:
+  - dense
+  preview: '# AI Engineering Job Market Trends What 6,964 AI engineering job postings tell us about where the role is going, based on eight monthly scrapes of builtin.com (Feb 4, 2026 through Aug 25, 2026). This is the readable summary. Full tables, cl...'
+  relevant: null
+- doc_id: field-guide/interview/questions/01-theory
+  section: Theory Questions > Specialized Topics
+  found_by:
+  - bm25
+  preview: '## Specialized Topics These topics are not asked by default in AI engineering interviews. They come up when the job description specifically requires them - for example, a role focused on model training or a research-adjacent engineer role....'
+  relevant: null
+- doc_id: field-guide/role/06-fde
+  section: 'Forward Deployed Engineers: What Our Job Data Shows > FDE hiring is outgrowing the market'
+  found_by:
+  - dense
+  preview: '## FDE hiring is outgrowing the market We draw three conclusions from our dataset: 1. FDE hiring is outgrowing the AI engineering market. Live listings grew 4.2x while the full crawl grew 2.3x. 2. Employers define the role through productio...'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Typical Job Titles
+  found_by:
+  - bm25
+  preview: '## Typical Job Titles AI Engineers work under various titles. The job title alone does not reliably indicate whether the role is AI-First, AI-Support, or ML-First. The most common titles in the dataset: - AI Engineer - 222 postings; of all ...'
+  relevant: null
+- doc_id: field-guide/role/08-trends-appendix
+  section: AI Engineering Job Market Trends - Appendix > Company stage over-index (skills)
+  found_by:
+  - dense
+  preview: '## Company stage over-index (skills) Over/under-index versus the whole-market baseline, by funding stage. Sample sizes: early (Seed-Series A) 335, growth (Series B-F) 202, public/late 291. Baseline: ai-first 70.0%, `RAG` 39.8%, agents 55.4%...'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: 'AI Engineering Job Market Trends > Since February: what actually moved'
+  found_by:
+  - bm25
+  preview: '## Since February: what actually moved Putting the first scrape (Feb 4) next to the latest (Aug 25) directly: - ai-first share: 71.5% -> 70.2%, essentially unchanged. The market has held a steady 68-71% ai-first mix the entire eight months ...'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Sources
+  found_by:
+  - dense
+  preview: '[^datainterview-mistral]: [DataInterview - Mistral ML Engineer Interview](https://www.datainterview.com/blog/mistral-machine-learning-engineer-interview) (prep guide based on candidate reports) [^hn-39748537]: [HN - RAG vs. Fine-Tuning](htt...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering > AI Interview Experiences
+  found_by:
+  - bm25
+  preview: '## AI Interview Experiences - [Mimansa Jaiswal: LLM/ML Job Interviews Fall 2024 (Process)](https://mimansajaiswal.github.io/posts/llm-ml-job-interviews-fall-2024-process/) - ~20+ companies including Anthropic, OpenAI, Meta, Apple - [Mimansa...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A After the Webinar > Job description quality and filtering'
+  found_by:
+  - bm25
+  preview: '### Job description quality and filtering I did not have a filter for low-quality job descriptions when scraping data. The number of such descriptions is likely not zero. Some job postings exist just for show - to signal to investors that t...'
+  relevant: null
+- doc_id: field-guide/role/04-use-cases
+  section: AI Use Cases Analysis > Problems AI Solves Today > Handling Specialized Domain Knowledge
+  found_by:
+  - dense
+  preview: '### Handling Specialized Domain Knowledge 250 mentions (1.0%); appears in 5.0% of jobs. Problem: Generic models don''t understand industry-specific language, regulations, or knowledge. AI Solution: Fine-tuned models for specialized domains. ...'
+  relevant: null
+- doc_id: field-guide/interview/questions/01-theory
+  section: Theory Questions > Specialized Topics > Fine-tuning and Training
+  found_by:
+  - bm25
+  preview: '### Fine-tuning and Training - When would you fine-tune vs use prompt engineering vs RAG? [^process-analysis] [^reddit-prep-ai-eng] [^reddit-genai-consulting] [^x-ashutosh-1] [^system-design-handbook] [^reddit-prep-ai-eng] [^hn-39748537] - ...'
+  relevant: null
+- doc_id: field-guide/webinars/01-a-day-of-ai-engineer
+  section: 'Webinar 1: A Day of an AI Engineer > Q&A After the Webinar > How uniform are AI Engineer job posting descriptions? What are the top 3 must-have skills?'
+  found_by:
+  - dense
+  preview: '### How uniform are AI Engineer job posting descriptions? What are the top 3 must-have skills? Answered at [Webinar 2: Defining the AI Engineer Role](02-defining-the-role.md) with data-driven analysis from 1,500+ job descriptions.'
+  relevant: null
+- doc_id: field-guide/webinars/README
+  section: Webinars > About the series
+  found_by:
+  - bm25
+  preview: '## About the series 1. A Day of an AI Engineer - The practical reality of the role: core responsibilities, prompt engineering, evaluation datasets, production concerns (A/B testing, monitoring, feedback loops), and the skills a modern AI en...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > Evaluation Skills
+  found_by:
+  - dense
+  preview: '## Evaluation Skills 59.7% of AI-First roles require evaluation-related skills (model evaluation, LLM evaluation, guardrails, monitoring, observability, model monitoring). That share moved from 55.9% in February to 59.6% in August, peaking ...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > Fine-Tuning Requirements > Depth of Fine-Tuning Expectation
+  found_by:
+  - dense
+  preview: '### Depth of Fine-Tuning Expectation | Level | Jobs | % | Description | |-------|------:|--:|-------------| | Primary FT responsibility | 174 | 3.6% | FT is main focus (model architecture, LoRA, PEFT) | | Secondary/occasional FT | 578 | 11....'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > "AI Engineering" Job Types > How to Tell the Difference
+  found_by:
+  - bm25
+  preview: '### How to Tell the Difference The key question is: Does this role work ON AI systems, or NEAR them? AI-First: - Builds RAG systems - Fine-tunes models - Implements agent workflows - Optimizes prompts - Deploys AI features AI-Support: - Bui...'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: AI Engineering Job Market Trends > Title predicts the stack
+  found_by:
+  - dense
+  preview: '## Title predicts the stack - `ai engineer` (n=2,131): 88% ai-first, 56% `RAG`, 68% agents - the canonical RAG-and-agents builder - `applied` (n=408, excludes FDE titles): 90% ai-first, only 28% customer-facing - despite the name, mostly no...'
+  relevant: null
+- doc_id: field-guide/webinars/04-take-home-assignments
+  section: 'Webinar 4: AI Engineering - Take-Home Assignments > Questions after the webinar'
+  found_by:
+  - bm25
+  preview: '## Questions after the webinar People asked about several adjacent career questions after the webinar. - **What should an AI product manager know?** The core product-management skills don''t change. AI product managers also benefit from buil...'
+  relevant: null
+- doc_id: field-guide/interview/data/research-exports/trends
+  section: AI Engineering Trends Analysis (2026) > Conclusion
+  found_by:
+  - dense
+  preview: '## Conclusion The 2026 AI Engineering landscape is defined by maturation: - From hype to production: Companies ship real AI products, need production-capable engineers - From demos to systems: Evaluation, monitoring, cost optimization are b...'
+  relevant: null
+- doc_id: field-guide/role/01-my-vision
+  section: My Vision of the AI Engineer Role > In Bigger Organizations
+  found_by:
+  - bm25
+  preview: '## In Bigger Organizations - AI responsibilities often split between existing data scientists and ML engineers - Data scientists: prompt tuning, validation framework - ML engineers: engineering aspects, deployment - Eventually a dedicated A...'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: AI Engineering Job Market Trends > The "AI infra engineer" still hasn't emerged - and the signal is weaker than before
+  found_by:
+  - dense
+  preview: '## The "AI infra engineer" still hasn''t emerged - and the signal is weaker than before Within ai-first jobs, the inference/serving stack (`vLLM`, `Triton`, `TensorRT`, `CUDA`, `Model Deployment`) fell from 19.8% to 9.9% - roughly half of wh...'
+  relevant: null
+- doc_id: field-guide/interview/data/research-exports/trends
+  section: AI Engineering Trends Analysis (2026) > 4. Role Definition Trends > 4.1 AI Engineer vs ML Engineer Clarification
+  found_by:
+  - bm25
+  preview: '## 4. Role Definition Trends ### 4.1 AI Engineer vs ML Engineer Clarification Still confused in market, but emerging consensus: | Dimension | AI Engineer | ML Engineer | |-----------|-------------|-------------| | Focus | Integrating pre-tr...'
+  relevant: null
+q22:
+- doc_id: genai-platform
+  section: Building A Generative AI Platform
+  found_by:
+  - dense
+  - bm25
+  preview: '# Building A Generative AI Platform After studying how companies deploy generative AI applications, I noticed many similarities in their platforms. This post outlines the common components of a generative AI platform, what they do, and how ...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: 'Awesome AI Engineering > Case Studies and Engineering Blogs: AI Systems in Production > LinkedIn'
+  found_by:
+  - dense
+  - bm25
+  preview: '### LinkedIn - [Musings on Building a Generative AI Product](https://www.linkedin.com/blog/engineering/generative-ai/musings-on-building-a-generative-ai-product) - [AI Platform at QCon AI 2025 (InfoQ)](https://www.infoq.com/news/2025/12/qco...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > Conclusion
+  found_by:
+  - dense
+  - bm25
+  preview: '## Conclusion This post started with a basic architecture and then gradually added components to address the growing application complexities. Each addition brings its own set of benefits and challenges, requiring careful consideration and ...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > References and Acknowledgments
+  found_by:
+  - dense
+  - bm25
+  preview: '## References and Acknowledgments Special thanks to Luke Metz, Alex Li, Chetan Tekur, Kittipat “Bot” Kampa, Hien Luu, and Denys Linkov for feedback on the early versions of this post. Their insights greatly improved the content. Any remaini...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > Step 1. Enhance Context
+  found_by:
+  - dense
+  preview: '## Step 1. Enhance Context The initial expansion of a platform usually involves adding mechanisms to allow the system to augment each query with the necessary information. Gathering the relevant information is called context construction. M...'
+  relevant: null
+- doc_id: field-guide/interview/questions/questions
+  section: AI Engineering Interview Questions > Technical Questions > LLM Fundamentals
+  found_by:
+  - bm25
+  preview: '- How do you ensure the outputs from large language models are consistent and accurate, especially when dealing with complex multi-step workflows? [^proptech-founder-1] - What''s an RAG model? Explain the complete process. [^khushal-kumar] [...'
+  relevant: null
+- doc_id: field-guide/webinars/02-defining-the-role
+  section: 'Webinar 2: Defining the AI Engineer Role > Q&A During the Webinar > Context layer for AI tools'
+  found_by:
+  - dense
+  preview: '### Context layer for AI tools It depends on what "context layer" means. It could be: how you build prompts, how you inject things into prompts, selecting which tools or MCP tools to include, using RAG, or maintaining agent memory (files or...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > What Other Titles Do "AI Engineers" Go Under?
+  found_by:
+  - bm25
+  preview: '- Software Engineer (AI) - 19 jobs (68% AI-First, 26% AI-Support) Key insight: "AI Engineer" is still the most common title and still the most reliable one (92% AI-First). But anything with "platform" or "data" in it is a coin flip - always...'
+  relevant: null
+- doc_id: field-guide/learning-paths/from-frontend-engineer
+  section: From Frontend Engineer to AI Engineer > Timeline
+  found_by:
+  - dense
+  preview: '## Timeline Longer than backend engineers because you need the backend foundation first. But once backend clicks, adding AI is the same path as everyone else.'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering > Courses
+  found_by:
+  - bm25
+  preview: '## Courses - [AI Engineering Buildcamp: From RAG to Agents](https://maven.com/alexey-grigorev/from-rag-to-agents) - Alexey Grigorev, 9-week intensive on building production-ready AI applications - [LLM Zoomcamp](https://github.com/DataTalks...'
+  relevant: null
+- doc_id: field-guide/interview/questions/03-project-deep-dive
+  section: Project Deep Dive Interview > Follow-up Probes > Business Problem and Context
+  found_by:
+  - bm25
+  preview: '### Business Problem and Context - What business problem were you solving? Why was it a priority? [^fonzi-ai] - Who was the customer? Who benefited from this work? [^fonzi-ai] - What was your actual role in building this? [^fonzi-ai] - How ...'
+  relevant: null
+- doc_id: field-guide/role/08-trends-appendix
+  section: AI Engineering Job Market Trends - Appendix > AI infra emergence (within ai-first, %)
+  found_by:
+  - dense
+  preview: '## AI infra emergence (within ai-first, %) The dedicated AI-infra role still hasn''t emerged at scale, and the inference/serving footprint keeps shrinking: - Any inference/serving (`vLLM`, `Triton`, `TensorRT`, `CUDA`, `Model Deployment`): 1...'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Typical Job Titles
+  found_by:
+  - bm25
+  preview: '## Typical Job Titles AI Engineers work under various titles. The job title alone does not reliably indicate whether the role is AI-First, AI-Support, or ML-First. The most common titles in the dataset: - AI Engineer - 222 postings; of all ...'
+  relevant: null
+- doc_id: field-guide/role/07-trends
+  section: AI Engineering Job Market Trends > Five role archetypes
+  found_by:
+  - dense
+  preview: '## Five role archetypes Running the same spherical k-means clustering (k=6, deterministic, seed=7) on the current corpus, k-means initially split agent-building into two clusters that differed almost entirely on whether `Prompt Engineering`...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > Step 3. Add Model Router and Gateway > Gateway
+  found_by:
+  - bm25
+  preview: Since requests and responses are already flowing through the gateway, it’s a good place to implement other functionalities such as load balancing, logging, and analytics. Some gateway services even provide caching and guardrails. Given that...
+  relevant: null
+- doc_id: field-guide/interview/questions/06-home-assignments
+  section: Home Assignments > Assignment Examples > Full-Stack AI Applications
+  found_by:
+  - dense
+  preview: '- Build an NPC system for a job simulation platform: three AI co-workers with distinct personalities, a "Director Agent" that detects conversation loops via semantic similarity (0.85 threshold), RAG-based knowledge retrieval. FastAPI + Clau...'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Very Common > Infrastructure and Platforms
+  found_by:
+  - bm25
+  preview: '### Infrastructure and Platforms Appears in 69.2% of jobs (6,076 responsibilities). Problem: AI requires specialized infrastructure - GPU clusters, MLOps tooling, scalable platforms. What AI Engineers do: - Set technical direction for the A...'
+  relevant: null
+- doc_id: field-guide/interview/data/research-exports/recruitment-evolution
+  section: 'The Strategic Evolution of AI Engineering Recruitment (2025–2026) > 2. The AI Engineering Roadmap (Portfolio Phases) > Phase III: Generative AI and LLM Orchestration'
+  found_by:
+  - dense
+  preview: '### Phase III: Generative AI and LLM Orchestration Mastering RAG and agentic frameworks. Solutions involving PDF ingestion, embeddings, semantic retrieval, OpenAI/Anthropic APIs. Key tech: LangChain, Hugging Face, Pinecone.'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Uncommon > Frontend and User Interfaces
+  found_by:
+  - bm25
+  preview: '## Uncommon ### Frontend and User Interfaces Appears in 17.1% of jobs (1,112 responsibilities). Problem: AI capabilities need user-friendly interfaces. Chatbots, dashboards, and web applications are how users interact with AI. What AI Engin...'
+  relevant: null
+- doc_id: field-guide/role/04-use-cases
+  section: AI Use Cases Analysis > Problems AI Solves Today > Creating Content at Scale
+  found_by:
+  - dense
+  preview: '### Creating Content at Scale 2,281 mentions (9.3%); appears in 33.4% of jobs. Problem: Marketing, education, and content teams need to produce large amounts of text, images, audio, and video. AI Solution: Generative AI for content creation...'
+  relevant: null
+- doc_id: field-guide/role/03-responsibilities
+  section: AI Engineering Responsibilities Analysis > Key Insights > 1. Building is the Primary Responsibility
+  found_by:
+  - bm25
+  preview: '## Key Insights ### 1. Building is the Primary Responsibility Building systems appears in 98.1% of jobs. AI Engineers are builders first and foremost.'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: 'Awesome AI Engineering > Case Studies and Engineering Blogs: AI Systems in Production > Anthropic'
+  found_by:
+  - dense
+  preview: '### Anthropic - [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) - workflows vs agents, composable patterns, Dec 2024 - [How We Built Our Multi-Agent Research System](https://www.anthropic.com/engine...'
+  relevant: null
+- doc_id: field-guide/portfolio/04-polishing
+  section: Polishing > README
+  found_by:
+  - bm25
+  preview: '## README Most people read the README first. Make it answer: - What problem does this solve? - Who''s it for? - What input does it take? - What output does it produce? - How do I run it? - How do I run tests and evals? - What did the eval sh...'
+  relevant: null
+- doc_id: field-guide/role/02-skills
+  section: AI Engineering Jobs Analysis > "AI Engineering" Job Types > How to Tell the Difference
+  found_by:
+  - dense
+  preview: '### How to Tell the Difference The key question is: Does this role work ON AI systems, or NEAR them? AI-First: - Builds RAG systems - Fine-tunes models - Implements agent workflows - Optimizes prompts - Deploys AI features AI-Support: - Bui...'
+  relevant: null
+- doc_id: genai-platform
+  section: Building A Generative AI Platform > Step 1. Enhance Context > RAGs
+  found_by:
+  - bm25
+  preview: Term-based retrieval is much faster and cheaper than embedding-based retrieval. It can work well out of the box, making it an attractive option to start. Both BM25 and Elasticsearch are widely used in the industry and serve as formidable ba...
+  relevant: null
+- doc_id: field-guide/awesome
+  section: 'Awesome AI Engineering > Case Studies and Engineering Blogs: AI Systems in Production > Uber'
+  found_by:
+  - dense
+  preview: '### Uber - [GenAI Gateway](https://www.uber.com/blog/genai-gateway/) - unified LLM platform, 60+ use cases - [From Predictive to Generative AI](https://www.uber.com/blog/from-predictive-to-generative-ai/) - Michelangelo platform evolution -...'
+  relevant: null
+- doc_id: field-guide/webinars/03-the-interview-process
+  section: 'Webinar 3: AI Engineering - The Interview Process > Q&A During the Webinar > How important is computer vision for AI engineering?'
+  found_by:
+  - bm25
+  preview: '### How important is computer vision for AI engineering? Not very important for AI engineering as I define it (integrating AI into products). If the core product involves image segmentation or specialized computer vision, then yes. But gene...'
+  relevant: null
+- doc_id: field-guide/interview/questions/04-ai-system-design
+  section: AI System Design Interview > AI System Design vs System Design
+  found_by:
+  - dense
+  preview: '## AI System Design vs System Design The fundamental shift: when models like GPT-4 and Claude became accessible via APIs, the hard part stopped being model training and started being system orchestration. [^chip-huyen-books] - Traditional M...'
+  relevant: null
+- doc_id: field-guide/interview/05-trends
+  section: Interview Trends (2026) > The Bar Feels Higher
+  found_by:
+  - dense
+  preview: '## The Bar Feels Higher Because everyone uses AI tools daily, the focus has shifted: - Explaining architecture and trade-offs over memorization - Demonstrating production thinking over coding speed - Showing how you reason with AI, not just...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: Awesome AI Engineering > Architecture Lessons and Patterns (2025-2026)
+  found_by:
+  - dense
+  preview: '## Architecture Lessons and Patterns (2025-2026) - [DataA.dev: From AI Pilots to Production Reality](https://www.dataa.dev/2026/01/01/from-ai-pilots-to-production-reality-architecture-lessons-from-2025-and-what-2026-demands/) - 7/10 GenAI p...'
+  relevant: null
+- doc_id: field-guide/awesome
+  section: 'Awesome AI Engineering > Case Studies and Engineering Blogs: AI Systems in Production > Meta'
+  found_by:
+  - dense
+  preview: '### Meta - [Meta''s Infrastructure Evolution and the Advent of AI](https://engineering.fb.com/2025/09/29/data-infrastructure/metas-infrastructure-evolution-and-the-advent-of-ai/) - Sep 2025 - [Scaling LLM Inference: Tensor, Context, Expert P...'
+  relevant: null

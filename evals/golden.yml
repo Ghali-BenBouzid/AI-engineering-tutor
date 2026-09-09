@@ -65,3 +65,15 @@ questions:
 - id: q18
   type: out_of_corpus
   question: How should I talk about a time I had to tell a manager that an ingredient or supplier wasn't meeting quality standards? I want to come across as someone with good judgment, not just someone who complains.
+- id: q19
+  type: document
+  question: What does the field guide say a portfolio project's README should actually contain?
+- id: q20
+  type: document
+  question: What is the 60-second pitch the field guide recommends for presenting a project, and what does it cover?
+- id: q21
+  type: document
+  question: How often does fine-tuning actually show up in AI engineer job postings according to the field guide's data?
+- id: q22
+  type: document
+  question: In the Building A Generative AI Platform article, what order are the components added in and why does context enhancement come first?
