@@ -25,6 +25,7 @@ from rank_bm25 import BM25Okapi
 
 from evals.dataset import load_golden, load_pool, save_pool
 from src.chunk import chunk_all
+from src.config import settings
 from src.retrieval import top_k_search
 
 POOL_SIZE = 20
@@ -49,10 +50,10 @@ def bm25_top(bm25: BM25Okapi, chunks: list[dict[str, Any]], question: str, n: in
     return [(chunks[i]["doc_id"], chunks[i]["section"], chunks[i]["text"]) for i in order]
 
 
-def dense_top(question: str, n: int):
+def dense_top(hits):
     return [
         (doc.metadata["doc_id"], doc.metadata.get("section", ""), doc.page_content)
-        for doc, _ in top_k_search(question, top_k=n)
+        for doc, _ in hits
     ]
 
 
@@ -114,7 +115,7 @@ def merge(judged: list[dict[str, Any]], fresh: list[dict[str, Any]]) -> list[dic
     return merged
 
 
-def build() -> dict[str, list[dict[str, Any]]]:
+def build() -> tuple[dict[str, list[dict[str, Any]]], dict[str, float | None]]:
     questions = load_golden()
     if not questions:
         raise SystemExit("evals/golden.yml has no questions yet")
@@ -123,28 +124,38 @@ def build() -> dict[str, list[dict[str, Any]]]:
     bm25 = BM25Okapi([tokenize(c["text"]) for c in chunks])
     existing = load_pool()
 
-    pool = {}
+    pool, nearest = {}, {}
     for q in questions:
+        # Measured for every question, including out-of-corpus ones: the
+        # distance is what the guardrail decides on, so it is the assertion.
+        hits = top_k_search(q["question"], top_k=POOL_SIZE)
+        nearest[q["id"]] = hits[0][1] if hits else None
+
         if q["type"] == "out_of_corpus":
             continue        # nothing to label: the assertion is that we refuse
         fresh = fuse({
-            "dense": dense_top(q["question"], POOL_SIZE),
+            "dense": dense_top(hits),
             "bm25": bm25_top(bm25, chunks, q["question"], POOL_SIZE),
         })
         pool[q["id"]] = merge(existing.get(q["id"], []), fresh)
-    return pool
+    return pool, nearest
 
 
 def main() -> None:
-    pool = build()
+    pool, nearest = build()
     save_pool(pool)
 
     unjudged = 0
-    for qid, candidates in pool.items():
+    for qid, distance in nearest.items():
+        candidates = pool.get(qid, [])
         marked = sum(1 for c in candidates if c.get("relevant") is True)
         blank = sum(1 for c in candidates if c.get("relevant") is None)
         unjudged += blank
-        print(f"{qid}  {len(candidates):3d} candidates  {marked} relevant  {blank} unjudged")
+        # nearest is the distance the abstention guardrail sees: above
+        # settings.max_distance the system refuses before the LLM is ever called.
+        flag = "REFUSED" if distance > settings.max_distance else ""
+        print(f"{qid}  nearest={distance:.3f}  {flag:<8}"
+              f"{len(candidates):3d} candidates  {marked} relevant  {blank} unjudged")
 
     print(f"\n{len(pool)} questions pooled, {unjudged} candidates awaiting judgment")
     print("Mark the ones that answer the question with `relevant: true` in evals/pool.yml.")
