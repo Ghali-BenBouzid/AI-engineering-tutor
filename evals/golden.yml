@@ -1,0 +1,13 @@
+# The golden set: questions only. Labels live in evals/pool.yml.
+#
+# Questions are written from the asker's point of view and never copied from
+# chunk text. A question that reuses a passage's wording tests string matching,
+# not retrieval.
+#
+#   id        stable, referenced by pool.yml and the tier 1 snapshot
+#   type      conceptual | document | out_of_corpus
+#   question  what a user would actually type
+#
+# out_of_corpus questions have no labels; they assert that the system refuses.
+
+questions: []

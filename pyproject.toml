@@ -23,6 +23,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "rank-bm25>=0.2.2",
 ]
 
 [tool.pytest.ini_options]
