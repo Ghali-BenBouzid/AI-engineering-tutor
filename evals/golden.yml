@@ -12,7 +12,7 @@
 
 questions:
 - id: q01
-  type: conceptual
+  type: out_of_corpus
   question: Can you walk me through, in plain terms, what actually happens between me typing a prompt and the model generating a response? I want to make sure I really understand tokenization and attention, not just repeat buzzwords in an interview.
 - id: q02
   type: conceptual
@@ -42,7 +42,7 @@ questions:
   type: conceptual
   question: How would you answer a question about catching a silent quality regression after a model update, ideally before a user even notices? I want to sound like I actually think about monitoring, not just accuracy at launch.
 - id: q11
-  type: conceptual
+  type: out_of_corpus
   question: Can you give me a short buggy script, something like a RAG loop or a prompt template, and let me find and fix the bug live? I want to practice that under pressure since I know it's the part where people can't just talk their way through it.
 - id: q12
   type: conceptual

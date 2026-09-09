@@ -8,7 +8,7 @@ judgment is never lost when the pool is rebuilt.
 import pytest
 import yaml
 
-from evals.dataset import labels_for, load_golden, load_pool, save_pool
+from evals.dataset import in_corpus, labels_for, load_golden, load_pool, save_pool
 from evals.pool import fuse, merge
 
 
@@ -141,3 +141,30 @@ def test_a_question_missing_a_field_is_rejected(tmp_path):
 
     with pytest.raises(ValueError, match="question"):
         load_golden(path)
+
+
+def test_every_in_corpus_question_has_at_least_one_label():
+    """A question with no label is not answerable, so it belongs in out_of_corpus."""
+    pool = load_pool()
+    for q in in_corpus(load_golden()):
+        assert labels_for(q["id"], pool), f"{q['id']} has no label but is typed {q['type']!r}"
+
+
+def test_out_of_corpus_questions_carry_no_labels():
+    pool = load_pool()
+    for q in load_golden():
+        if q["type"] == "out_of_corpus":
+            assert not pool.get(q["id"]), f"{q['id']} is out_of_corpus but has candidates"
+
+
+@pytest.mark.slow
+def test_every_label_points_at_a_section_that_still_exists():
+    """Labels are (doc_id, section) so they survive rechunking - this proves it."""
+    from src.chunk import chunk_all
+
+    sections = {(c["doc_id"], c["section"]) for c in chunk_all()}
+    pool = load_pool()
+    for qid in pool:
+        for label in labels_for(qid, pool):
+            key = (label["doc_id"], label["section"])
+            assert key in sections, f"{qid}: label {key} no longer exists in the corpus"
