@@ -26,6 +26,10 @@ top_distance=0.5151  abstained=True
 I cannot answer this question from the available sources.
 ```
 
+The second case is the guardrail working, and it is not representative.
+The evaluation shows it fires on questions far outside the corpus and misses ones that are merely in a different domain.
+See "What failed or changed".
+
 ## Run it
 
 ```bash
@@ -34,12 +38,12 @@ cp .env.example .env             # add an OpenRouter API key
 
 uv run python ingest.py          # build the index: fetch, parse, chunk, embed
 uv run python -m src.answer      # ask the two sample questions above
-uv run pytest                    # 68 tests, ~60s
-uv run pytest -m "not slow"      # 54 tests, no model load, ~12s
-```
+uv run pytest                    # 103 tests, ~60s
+uv run pytest -m "not slow"      # 76 tests, no model load, ~13s
 
-There is no eval command yet.
-The harness is designed and not built, and the section below says what it will measure.
+uv run python -m evals.tier1     # retrieval metrics, no API key needed
+uv run python -m evals.pool      # rebuild the judgment pool
+```
 
 ## Problem, user, input, output
 
@@ -89,6 +93,10 @@ Everything upstream of the index forces a full rebuild when it changes; everythi
 | [`src/fetch_and_parse.py`](src/fetch_and_parse.py) | fetch, parse, and the metadata contract |
 | [`src/chunk.py`](src/chunk.py) | heading-aware then token-aware splitting |
 | [`tests/test_ingest.py`](tests/test_ingest.py) | end-to-end ingestion against a real git repo and a local HTTP server |
+| [`evals/golden.yml`](evals/golden.yml) | the 22 evaluation questions |
+| [`evals/pool.yml`](evals/pool.yml) | the judged candidates, which are the ground truth |
+| [`evals/pool.py`](evals/pool.py) | pooling: dense plus BM25, fused, judgments carried forward |
+| [`evals/tier1.py`](evals/tier1.py) | deterministic scoring and the snapshot gate |
 
 ## Corpus
 
@@ -98,36 +106,69 @@ Two sources, pinned in `data/sources.lock.yml`: the [AI Engineering Field Guide]
 The corpus is snapshotted rather than fetched live, because evaluation numbers are only comparable against a frozen corpus.
 If a source changes underneath you, a hit-rate movement no longer tells you whether the retriever improved or the corpus moved.
 The lockfile stamps a new `fetched_at` only when the hash or commit changes, so a diff in that file always means the corpus actually moved.
+It is also read back: a recorded commit is checked out rather than whatever HEAD is that day, so a hit-rate movement cannot be the corpus moving underneath the retriever.
+Delete the lockfile entry to move the corpus forward deliberately.
 
 ## Tests
 
-68 tests, no mocks.
+103 tests, no mocks.
 A real local git repository, a real HTTP server on localhost, the real tokenizer, real Chroma.
 Every path constant is a relative `Path`, so `monkeypatch.chdir` into a temporary directory redirects the whole pipeline without patching internals.
 
-Covered: the metadata contract on both source types, lockfile stability across runs, chunk sizes measured in tokens rather than characters, chunk ids deterministic and unique, optional metadata absent rather than `None`, embeddings unit length on both paths, the query prefix applied to queries only, re-indexing upserting rather than duplicating, and excludes surviving the whole pipeline.
+Covered: the metadata contract on both source types, lockfile stability across runs, a new upstream commit not moving a pinned corpus, chunk sizes measured in tokens rather than characters, chunk ids deterministic and unique, optional metadata absent rather than `None`, embeddings unit length on both paths, the query prefix applied to queries only, re-indexing upserting rather than duplicating, excludes surviving the whole pipeline, every eval label still pointing at a section that exists, and the committed snapshot agreeing with live settings.
 
-Three of these were written after the bug they now catch.
+Four of these were written after the bug they now catch.
 
 ## Evaluation
 
-Not built. This is the next milestone, and the design is in [`v0-design-decisions.md`](v0-design-decisions.md).
+Tier 1 is built and runs on every commit in CI.
+Tier 2 is not built.
 
-The plan splits by determinism rather than by metric family:
+```
+      hit_rate_at_5 = 0.7647      13 of 17 in-corpus questions
+                mrr = 0.5216
+    abstention_rate = 0.0          0 of 5 out-of-corpus questions
+```
 
-**Deterministic, every commit, in CI.** `hit-rate@5` and MRR against a golden set of ~20 hand-written questions labelled `(doc_id, section)`, plus abstention on out-of-corpus questions, which needs no model because the guardrail fires before the LLM is called.
-These are set arithmetic on a frozen corpus, so they are free, instant, and identical run to run.
+`evals/tier1.py` scores retrieval against a golden set of 22 questions with no LLM, no judge and no API key, because whether a labelled section appeared in the top k is set arithmetic on a frozen corpus.
+Results go to a committed snapshot, so a commit that changes retrieval changes that file and the effect arrives as a reviewable diff (`q07 rank 3 -> rank 1`) rather than as a metric moving for reasons nobody can see.
+Coarse absolute floors sit below the baseline to catch a collapse that nobody should be able to accept by rerunning with `--update`.
+
+The gap between hit-rate and MRR is the finding.
+Seven of the thirteen hits are at rank 1, but three only scrape in at rank 4 or 5, so they would be misses at `k=3`.
+That fragility is invisible in hit-rate alone and is the case a reranker is meant to fix, which is now a V1 change with a number to beat.
+
+### How the labels were made
+
+Labelling every relevant chunk in a corpus is infeasible, so `evals/pool.py` pools: it takes the top 20 from dense retrieval and the top 20 from BM25, fuses them by reciprocal rank, and only those candidates get judged.
+Anything unjudged counts as not relevant, which can understate a score but never inflate one.
+Two retrieval methods rather than one, because a pool built by a single retriever never surfaces what a different method would have found, and then scores that method as a miss.
+
+Pooling only ever adds.
+A judged candidate is kept forever, even once it drops out of the pool, so labels get more complete with every retrieval change instead of freezing around whatever today's retriever likes.
+
+**20 of the 71 labels are for sections that neither method surfaced at all.**
+The misses cluster: `Observability > Metrics` was retrieved while `Observability`, `> Logs` and `> Traces` were not, and for a question about latency the entire `Step 4. Reduce Latency with Cache` family was absent.
+Chunking flattened a heading hierarchy that was carrying meaning, and top-k has no way to know a retrieved chunk has relatives.
+That is the argument for parent-document retrieval, with a number attached instead of an intuition.
+
+Labels are LLM-assisted and human-reviewed, not hand-written.
+Stating that matters, because ground truth produced by a model and then scored by a model is circular unless the provenance is visible.
+
+Two questions were reclassified out-of-corpus during labelling because nothing answered them: one asks how tokenization and attention work, which the corpus names only inside lists of interview questions, and one asks the system to generate a debugging exercise, which is not a retrieval question at any corpus size.
+
+### Not built
 
 **LLM-judged, on demand.** Faithfulness and answer relevancy through a judge model that is stronger than and different from the generator.
-These are slow, paid, and non-deterministic, so they produce a scored report compared against the previous run rather than a pass/fail gate.
+These are slow, paid and non-deterministic, so they produce a scored report compared against the previous run rather than a pass/fail gate.
 
 **Baseline.** The same generator with no retrieved context, reported per question type.
-On out-of-corpus questions the baseline is expected to beat the system, because the system correctly refuses while the baseline answers from memory.
+On out-of-corpus questions the baseline is expected to beat the system, because the system should refuse while the baseline answers from memory.
 Aggregating the question types into one number would make correct behaviour look like a loss.
 
 ## What failed or changed
 
-Five bugs that shaped the design. All of them produced no error.
+Six findings that shaped the design. None of them produced an error.
 
 **MiniLM truncates at 256 tokens.** The original plan paired `all-MiniLM-L6-v2` with 400-500 token chunks. Anything past 256 would have been silently dropped from the embedding while still being fed to the model as context. Switched to `bge-small-en-v1.5` for its 512-token sequence length.
 
@@ -139,7 +180,24 @@ Five bugs that shaped the design. All of them produced no error.
 
 **The generator was a reasoning model.** `deepseek-v4-flash` spent 18.9 seconds and 171 reasoning tokens on "introduce yourself". Wrong for a system whose evaluation runs the same 20 questions repeatedly, and it would have compressed the baseline comparison by reasoning its way to good answers without the corpus.
 
-Four of the five are the same bug shape: a number that is correct in the wrong unit, or a value that is correct for a different component. None of them raised.
+**The abstention threshold was calibrated against the wrong kind of question.**
+The 0.4 cosine-distance cutoff was set from in-corpus questions at ~0.19 against "what is the best pizza dough hydration?" at 0.51.
+That question differs from the corpus in three ways at once: domain, register and length, seven words against forty.
+
+The golden set includes three out-of-corpus questions that change **only the domain** - pastry-shop interview questions written in the same first-person interview-prep voice as the real ones.
+They score 0.290, 0.335 and 0.398, all under the threshold.
+Worse, a real question with the correct section retrieved scores 0.324, inside that range, so no cutoff on this signal separates the two classes.
+Abstention is 0 of 5 and there is no threshold that fixes it.
+
+The cause is dilution.
+The query embedding averages over the whole string, and in a forty-word question the framing (`I want to come across as someone with good judgment`) outweighs the few tokens that carry the subject.
+The corpus is entirely interview-prep material, so that framing matches it no matter what the question is about.
+
+The general lesson: a calibration set that varies more than one thing at a time measures the easiest difference rather than the one you care about.
+The fix is left unmade on purpose so the repair is a measured change with a before and after.
+
+The first five findings share one shape: a number that is correct in the wrong unit, or a value that is correct for a different component.
+The sixth is different in kind. It is not a bug in the code, it is a measurement that was never valid, and only building the eval exposed it.
 
 ## Limitations
 
@@ -155,18 +213,22 @@ Delete `data/chroma/` before re-ingesting.
 Retrieval's value here is attribution, verifiability and currency, not novel knowledge.
 The baseline comparison is expected to show a smaller gap on conceptual questions than on document-specific ones.
 
-**The abstention threshold rests on four measurements.**
-In-corpus questions score around 0.19 cosine distance, out-of-corpus around 0.51, and 0.4 splits them.
-That is calibration, not validation. The golden set is what will settle it.
+**Abstention does not work.**
+The guardrail fires on none of the five out-of-corpus questions, and the in-corpus and out-of-corpus distance ranges overlap, so retuning the threshold cannot fix it.
+See "What failed or changed" for the measurements. The candidate repairs are stripping the framing before embedding (query rewriting) or replacing the distance test with a groundedness check after retrieval.
+
+**Ground truth is LLM-assisted.**
+The 71 labels were produced by a model against a pooled candidate set and reviewed rather than written from scratch.
+Sixteen of the calls are adjacent rather than squarely on the question and are the ones worth challenging first.
 
 ## Status
 
 - [x] Ingestion: fetch, parse, chunk, embed, index, with a corpus lockfile
 - [x] Retrieval with an abstention guardrail and an index/model mismatch check
 - [x] Generation with numbered citations and citation validation
-- [x] 68 tests covering the pipeline and its known failure modes
-- [ ] Golden dataset of ~20 labelled questions
-- [ ] Deterministic retrieval metrics in CI
+- [x] 103 tests covering the pipeline and its known failure modes
+- [x] Golden dataset of 22 questions, labelled by pooling two retrieval methods
+- [x] Deterministic retrieval metrics in CI, gated by a committed snapshot
 - [ ] LLM-judged metrics and a no-context baseline
 - [ ] Web interface
 - [ ] Tracing
