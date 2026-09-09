@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - run: uv sync --frozen
+
+      - name: Cache the embedding model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ hashFiles('src/config.py') }}
+
+      # The key is everything upstream of the index. Change the corpus, the
+      # chunker, the embedder or their settings and the index is rebuilt;
+      # change anything downstream and the cached index is still correct.
+      - name: Cache the index
+        id: index
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            data/raw
+            data/processed
+            data/chroma
+          key: index-${{ hashFiles('data/sources.lock.yml', 'src/fetch_and_parse.py', 'src/chunk.py', 'src/embed.py', 'src/index.py', 'src/config.py') }}
+
+      - name: Build the index
+        if: steps.index.outputs.cache-hit != 'true'
+        run: uv run python ingest.py
+
+      - run: uv run pytest
+
+      # No API key: tier 1 is retrieval and the guardrail, both deterministic.
+      - name: Tier 1 evaluation
+        run: uv run python -m evals.tier1
