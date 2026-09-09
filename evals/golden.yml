@@ -1,0 +1,79 @@
+# The golden set: questions only. Labels live in evals/pool.yml.
+#
+# Questions are written from the asker's point of view and never copied from
+# chunk text. A question that reuses a passage's wording tests string matching,
+# not retrieval.
+#
+#   id        stable, referenced by pool.yml and the tier 1 snapshot
+#   type      conceptual | document | out_of_corpus
+#   question  what a user would actually type
+#
+# out_of_corpus questions have no labels; they assert that the system refuses.
+
+questions:
+- id: q01
+  type: out_of_corpus
+  question: Can you walk me through, in plain terms, what actually happens between me typing a prompt and the model generating a response? I want to make sure I really understand tokenization and attention, not just repeat buzzwords in an interview.
+- id: q02
+  type: conceptual
+  question: I keep seeing 'fine-tuning vs RAG' come up. Can you help me build intuition for when each one actually makes sense, so I'm not just reciting a rule I don't really get?
+- id: q03
+  type: conceptual
+  question: Say I got asked to design a RAG pipeline for a support chatbot over a big internal doc set that changes weekly. How would you think through the chunking strategy, retrieval approach, and keeping the index fresh? I want to practice reasoning through that out loud.
+- id: q04
+  type: conceptual
+  question: What should I say if an interviewer asks why a RAG system might still hallucinate even when it's retrieving the right documents? I get the general idea but I'm not confident explaining the actual causes and fixes.
+- id: q05
+  type: conceptual
+  question: How do people actually measure whether an LLM app is 'working well' in production? I don't want to just say 'we'd test it,' I want to sound like I actually know what metrics and processes matter.
+- id: q06
+  type: conceptual
+  question: If I'm asked about prompt injection or jailbreaks, what's a solid way to explain how I'd defend against that? I want an answer that shows I understand the limits of just writing a strict system prompt.
+- id: q07
+  type: conceptual
+  question: Can you quiz me on embeddings versus vector databases? I want to make sure I can explain why you need both and not just repeat the terms without real understanding.
+- id: q08
+  type: conceptual
+  question: Can we run through a scenario where an app's latency and costs have both doubled after launch? I want to practice how I'd talk through debugging that and the levers I'd pull.
+- id: q09
+  type: conceptual
+  question: I'm shaky on the line between 'function calling' and a true 'agent.' Can you help me explain that clearly, and also how I'd argue for not over-engineering something into an agent when it doesn't need to be one?
+- id: q10
+  type: conceptual
+  question: How would you answer a question about catching a silent quality regression after a model update, ideally before a user even notices? I want to sound like I actually think about monitoring, not just accuracy at launch.
+- id: q11
+  type: out_of_corpus
+  question: Can you give me a short buggy script, something like a RAG loop or a prompt template, and let me find and fix the bug live? I want to practice that under pressure since I know it's the part where people can't just talk their way through it.
+- id: q12
+  type: conceptual
+  question: If I'm asked how I'd decide whether to switch to a new open-source model release, what should my answer actually cover beyond 'check the benchmarks'?
+- id: q13
+  type: conceptual
+  question: Can you help me think of a good story to tell about a time something I built didn't work as expected in production? I want to practice framing it so it shows ownership and what I learned, not just 'it broke and I fixed it.'
+- id: q14
+  type: conceptual
+  question: How should I respond if someone asks what I'd do if a PM wanted an AI feature 'just because competitors have one'? I want to come across as someone with product judgment, not just an engineer who says yes to everything.
+- id: q15
+  type: conceptual
+  question: What's a thoughtful way to talk about ethical concerns in shipping generative AI, like bias or privacy, without sounding like I'm just repeating a checklist I memorized?
+- id: q16
+  type: out_of_corpus
+  question: If they ask me how I'd handle a situation where a big custom cake order falls through the day before a wedding, what's a good way to answer that shows I stay calm and think on my feet, not just that I'd panic and improvise?
+- id: q17
+  type: out_of_corpus
+  question: I know they're going to ask about scaling recipes for large batches without messing up the texture. Can you help me explain that in a way that sounds like real experience, not just something I read in a textbook?
+- id: q18
+  type: out_of_corpus
+  question: How should I talk about a time I had to tell a manager that an ingredient or supplier wasn't meeting quality standards? I want to come across as someone with good judgment, not just someone who complains.
+- id: q19
+  type: document
+  question: What does the field guide say a portfolio project's README should actually contain?
+- id: q20
+  type: document
+  question: What is the 60-second pitch the field guide recommends for presenting a project, and what does it cover?
+- id: q21
+  type: document
+  question: How often does fine-tuning actually show up in AI engineer job postings according to the field guide's data?
+- id: q22
+  type: document
+  question: In the Building A Generative AI Platform article, what order are the components added in and why does context enhancement come first?

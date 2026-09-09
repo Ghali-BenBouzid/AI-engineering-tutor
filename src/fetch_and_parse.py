@@ -43,8 +43,11 @@ def fetch_git(source: dict[str, Any]) -> str:
     dest = CACHE / source["id"]
 
     if not dest.exists():
+        # Blobless and sparse, but not shallow: every commit has to be
+        # reachable so a pinned one can be checked out. Full history costs
+        # about 1 MB here, a shallow clone cannot be pinned at all.
         subprocess.run(
-            ["git", "clone", "--depth", "1", "--filter=blob:none", "--sparse",
+            ["git", "clone", "--quiet", "--filter=blob:none", "--sparse",
              source["url"], str(dest)],
             check=True,
         )
@@ -52,6 +55,22 @@ def fetch_git(source: dict[str, Any]) -> str:
             ["git", "-C", str(dest), "sparse-checkout", "set", "--no-cone", "/**/*.md"],
             check=True,
         )
+
+    # The lockfile pins the corpus. Eval numbers only compare run to run if the
+    # commit is identical, so a recorded commit is checked out instead of
+    # whatever HEAD is today. Delete the lockfile entry to move the corpus on.
+    pinned = load_lock().get(source["id"], {}).get("commit")
+    if pinned:
+        known = subprocess.run(["git", "-C", str(dest), "cat-file", "-e", f"{pinned}^{{commit}}"],
+                               capture_output=True)
+        if known.returncode:
+            subprocess.run(["git", "-C", str(dest), "fetch", "--quiet", "origin"], check=True)
+        subprocess.run(["git", "-C", str(dest), "checkout", "--quiet", pinned], check=True)
+    else:
+        # Unpinned means take whatever upstream has now, so a cached clone is
+        # never silently stale.
+        subprocess.run(["git", "-C", str(dest), "fetch", "--quiet", "origin"], check=True)
+        subprocess.run(["git", "-C", str(dest), "checkout", "--quiet", "FETCH_HEAD"], check=True)
 
     sha = subprocess.run(
         ["git", "-C", str(dest), "rev-parse", "HEAD"],

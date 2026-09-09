@@ -6,9 +6,11 @@ network and nothing mocked.
 """
 
 import importlib
+import subprocess
 import threading
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 
 import frontmatter
 import pytest
@@ -16,6 +18,7 @@ import yaml
 
 import ingest
 import src.fetch_and_parse as fp
+from tests.conftest import long_markdown
 from src.chunk import PROCESSED, chunk_all
 from src.config import settings
 from src.index import get_store
@@ -185,3 +188,43 @@ def test_the_raw_directory_setting_is_honoured_by_both_fetchers(
     finally:
         monkeypatch.undo()
         importlib.reload(fp)
+
+
+# --- the corpus stays where the lockfile pins it --------------------------
+
+def origin_of(source):
+    from urllib.parse import urlparse
+    from urllib.request import url2pathname
+    return Path(url2pathname(urlparse(source["url"]).path))
+
+
+def commit_change(repo, title):
+    (repo / "guide" / "interview.md").write_text(long_markdown(title), encoding="utf-8")
+    for args in (("add", "-A"), ("commit", "-qm", title)):
+        subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True)
+
+
+def test_a_new_upstream_commit_does_not_move_a_pinned_corpus(corpus, git_source):
+    """Eval numbers only compare across runs if the corpus is identical."""
+    fp.fetch_and_parse()
+    pinned = lockfile()["field-guide"]["commit"]
+    before = (PROCESSED / "field-guide" / "guide" / "interview.md").read_text(encoding="utf-8")
+
+    commit_change(origin_of(git_source), "Rewritten Upstream")
+    fp.fetch_and_parse()
+
+    assert lockfile()["field-guide"]["commit"] == pinned
+    assert (PROCESSED / "field-guide" / "guide" / "interview.md").read_text(encoding="utf-8") == before
+
+
+def test_deleting_the_lockfile_lets_the_corpus_move_forward(corpus, git_source):
+    """The pin is a floor, not a cage."""
+    fp.fetch_and_parse()
+    pinned = lockfile()["field-guide"]["commit"]
+
+    commit_change(origin_of(git_source), "Rewritten Upstream")
+    fp.LOCK.unlink()
+    fp.fetch_and_parse()
+
+    assert lockfile()["field-guide"]["commit"] != pinned
+    assert "Rewritten Upstream" in (PROCESSED / "field-guide" / "guide" / "interview.md").read_text(encoding="utf-8")

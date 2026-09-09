@@ -25,8 +25,8 @@ header_splitter = MarkdownHeaderTextSplitter(
 
 size_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
     tokenizer,
-    chunk_size=450,
-    chunk_overlap=90,
+    chunk_size=settings.chunk_size,
+    chunk_overlap=settings.chunk_overlap,
 )
 
 

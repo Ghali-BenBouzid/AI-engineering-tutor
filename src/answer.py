@@ -2,10 +2,9 @@ import re
 from dataclasses import dataclass, field
 
 from src.assemble import format_context, format_sources
-from src.config import settings
 from src.llm import get_llm
 from src.prompt import NO_ANSWER, RAG_PROMPT
-from src.retrieval import top_k_search
+from src.retrieval import should_abstain, top_k_search
 
 CITATION = re.compile(r"\[(\d+)\]")
 
@@ -26,8 +25,7 @@ def cited(text: str) -> set[int]:
 def answer(question: str) -> Answer:
     hits = top_k_search(question)
 
-    # Chroma returns cosine distance here, smaller is closer.
-    if not hits or hits[0][1] > settings.max_distance:
+    if should_abstain(hits):
         return Answer(
             text=NO_ANSWER,
             abstained=True,

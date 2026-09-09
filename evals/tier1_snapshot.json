@@ -1,0 +1,99 @@
+{
+  "config": {
+    "chunk_overlap": 90,
+    "chunk_size": 450,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "max_distance": 0.4,
+    "top_k": 5
+  },
+  "metrics": {
+    "abstention_rate": 0.0,
+    "hit_rate_at_5": 0.7647,
+    "mrr": 0.5216
+  },
+  "questions": {
+    "q01": {
+      "abstained": false
+    },
+    "q02": {
+      "hit": true,
+      "rank": 4
+    },
+    "q03": {
+      "hit": true,
+      "rank": 5
+    },
+    "q04": {
+      "hit": false,
+      "rank": null
+    },
+    "q05": {
+      "hit": true,
+      "rank": 3
+    },
+    "q06": {
+      "hit": true,
+      "rank": 1
+    },
+    "q07": {
+      "hit": true,
+      "rank": 1
+    },
+    "q08": {
+      "hit": true,
+      "rank": 4
+    },
+    "q09": {
+      "hit": false,
+      "rank": null
+    },
+    "q10": {
+      "hit": true,
+      "rank": 1
+    },
+    "q11": {
+      "abstained": false
+    },
+    "q12": {
+      "hit": true,
+      "rank": 2
+    },
+    "q13": {
+      "hit": true,
+      "rank": 1
+    },
+    "q14": {
+      "hit": false,
+      "rank": null
+    },
+    "q15": {
+      "hit": false,
+      "rank": null
+    },
+    "q16": {
+      "abstained": false
+    },
+    "q17": {
+      "abstained": false
+    },
+    "q18": {
+      "abstained": false
+    },
+    "q19": {
+      "hit": true,
+      "rank": 3
+    },
+    "q20": {
+      "hit": true,
+      "rank": 1
+    },
+    "q21": {
+      "hit": true,
+      "rank": 1
+    },
+    "q22": {
+      "hit": true,
+      "rank": 1
+    }
+  }
+}

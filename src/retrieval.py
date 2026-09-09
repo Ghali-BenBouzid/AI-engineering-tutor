@@ -19,6 +19,15 @@ def top_k_search(query: str, top_k=settings.top_k) -> list[tuple[Document, float
     return results
 
 
+def should_abstain(hits: list[tuple[Document, float]]) -> bool:
+    """The guardrail. Chroma returns cosine distance here, so smaller is closer.
+
+    Lives here rather than in answer.py so the eval measures the rule itself
+    instead of a copy of it that can drift.
+    """
+    return not hits or hits[0][1] > settings.max_distance
+
+
 def main() -> None:
     user_query = "What is query rewriting ?"
 
